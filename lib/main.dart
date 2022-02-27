@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_portfolio_ui/pages/home_page.dart';
+import 'package:my_portfolio_ui/pages/projects_page.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +18,18 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomePage(),
+      home: const ProjectsPage(),
+      builder: (context, widget) => ResponsiveWrapper.builder(
+        ClampingScrollWrapper.builder(context, widget!),
+        breakpoints: [
+          ResponsiveBreakpoint.autoScaleDown(350, name: "SMALLMOBILE"),
+          ResponsiveBreakpoint.resize(350, name: MOBILE),
+          ResponsiveBreakpoint.autoScale(500, name: "LARGEMOBILE"),
+          ResponsiveBreakpoint.resize(600, name: TABLET),
+          ResponsiveBreakpoint.autoScale(700, name: "LARGETABLET"),
+          // ResponsiveBreakpoint.autoScale(1700, name: DESKTOP),
+        ],
+      ),
     );
   }
 }
