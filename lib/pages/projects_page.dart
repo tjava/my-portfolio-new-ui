@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_portfolio_ui/constants/colors.dart';
 import 'package:my_portfolio_ui/data/data.dart';
 import 'package:my_portfolio_ui/widgets/custom_text.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 class ProjectsPage extends StatelessWidget {
   const ProjectsPage({Key? key}) : super(key: key);
@@ -19,7 +20,8 @@ class ProjectsPage extends StatelessWidget {
       );
 
   _buildProject(context) => Container(
-        height: 400,
+        height: 450.0,
+        width: 650.0,
         margin: EdgeInsets.only(top: 20, right: 15, left: 15),
         decoration: BoxDecoration(
           color: Colors.white,
@@ -28,26 +30,29 @@ class ProjectsPage extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              height: 250,
+              height: ResponsiveValue(context, defaultValue: 300.0, valueWhen: [
+                Condition.smallerThan(name: "LARGEMOBILE", value: 280.0)
+              ]).value,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                 color: Colors.red,
                 borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(10),
-                    topLeft: Radius.circular(10)),
+                  topRight: Radius.circular(10),
+                  topLeft: Radius.circular(10),
+                ),
               ),
               child: Image(
                 image: AssetImage("assets/images/wrench.png"),
               ),
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 15),
             CustomText(
               text: "Art Store",
               size: 25,
               weight: FontWeight.bold,
               color: lightPurple,
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 15),
             Container(
               margin: EdgeInsets.only(right: 15, left: 15, bottom: 5),
               child: RichText(
@@ -63,6 +68,7 @@ class ProjectsPage extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
             ),
+            SizedBox(height: 15),
             Container(
               height: 40,
               width: MediaQuery.of(context).size.width,
@@ -88,15 +94,17 @@ class ProjectsPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Container(
-        margin: EdgeInsets.only(right: 3, left: 3),
+        margin: EdgeInsets.only(right: 7, left: 7),
         child: ListView(
           children: [
             SizedBox(height: 70),
-            CustomText(
-              text: "Projects",
-              size: 30,
-              weight: FontWeight.bold,
-              color: dark,
+            Center(
+              child: CustomText(
+                text: "Projects",
+                size: 30,
+                weight: FontWeight.bold,
+                color: dark,
+              ),
             ),
             SizedBox(height: 20),
             RichText(
@@ -123,31 +131,32 @@ class ProjectsPage extends StatelessWidget {
               ],
             ),
             SizedBox(height: 20),
-            Expanded(
-              child: Container(
-                child: Stack(
-                  children: [
-                    Positioned.fill(
-                      child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        decoration: const BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage(
-                                "assets/images/projectsBackground.png"),
-                            fit: BoxFit.fill,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Column(
+            Container(
+              padding: EdgeInsets.only(bottom: 20),
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("assets/images/projectsBackground.png"),
+                  fit: BoxFit.fill,
+                ),
+              ),
+              child: Stack(
+                children: [
+                  Center(
+                    child: ResponsiveRowColumn(
+                      // rowMainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      layout:
+                          ResponsiveWrapper.of(context).isSmallerThan(DESKTOP)
+                              ? ResponsiveRowColumnType.COLUMN
+                              : ResponsiveRowColumnType.ROW,
                       children: [
-                        _buildProject(context),
-                        _buildProject(context),
-                        SizedBox(height: 20),
+                        ResponsiveRowColumnItem(
+                            rowFlex: 1, child: _buildProject(context)),
+                        ResponsiveRowColumnItem(
+                            rowFlex: 1, child: _buildProject(context)),
                       ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ],

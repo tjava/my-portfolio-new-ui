@@ -13,9 +13,9 @@ class HomePage extends StatelessWidget {
       body: Column(
         children: [
           Container(
-            height: 220,
-            width: 220,
-            margin: const EdgeInsets.only(top: 80),
+            height: 200,
+            width: 180,
+            margin: const EdgeInsets.only(top: 60),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               image: const DecorationImage(
