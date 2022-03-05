@@ -8,15 +8,21 @@ class ProjectsPage extends StatelessWidget {
   const ProjectsPage({Key? key}) : super(key: key);
 
   _buildSkill({imagePath}) => Container(
-        height: 50,
-        width: 50,
+        height: 40,
+        width: 40,
         decoration: BoxDecoration(
           // color: Colors.blue,
           image: DecorationImage(
             image: AssetImage(imagePath!),
             fit: BoxFit.fill,
+            // colorFilter: ColorFilter.mode(Colors.blue, BlendMode.dstATop),
           ),
         ),
+        // child: Container(
+        //   decoration: BoxDecoration(
+        //     color: Colors.green.withOpacity(.9),
+        //   ),
+        // ),
       );
 
   _buildProject(context) => Container(
@@ -97,7 +103,7 @@ class ProjectsPage extends StatelessWidget {
         margin: EdgeInsets.only(right: 7, left: 7),
         child: ListView(
           children: [
-            SizedBox(height: 70),
+            SizedBox(height: 30),
             Center(
               child: CustomText(
                 text: "Projects",

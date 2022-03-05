@@ -23,7 +23,7 @@ class Layout extends StatelessWidget {
     return Obx(
       () => Scaffold(
         extendBody: true,
-        body: Pages[navigationController.indexPage.value],
+        body: Pages[navigationController.activePage.value],
         appBar: NavigationBar(context),
       ),
     );
