@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
 class NavigationController extends GetxController {
-  RxInt activePage = 1.obs;
+  RxInt activePage = 2.obs;
   // RxInt get indexPage => _indexPage;
   RxInt hoverPage = 4.obs;
 
