@@ -26,11 +26,11 @@ class ProjectsPage extends StatelessWidget {
       );
 
   _buildProject(context) => Container(
-        height: 450.0,
+        height: 50.0,
         width: 650.0,
         margin: EdgeInsets.only(top: 20, right: 15, left: 15),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Colors.green,
           borderRadius: BorderRadius.circular(10),
         ),
         child: Column(
@@ -95,13 +95,51 @@ class ProjectsPage extends StatelessWidget {
         ),
       );
 
+  _buildSkills(context) => Container(
+        height: 150.0,
+        width: 150.0,
+        margin: EdgeInsets.all(15),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          border: Border.all(color: darkPurple),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              height: ResponsiveValue(context, defaultValue: 110.0, valueWhen: [
+                Condition.smallerThan(name: "LARGEMOBILE", value: 90.0)
+              ]).value,
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(10),
+                  topLeft: Radius.circular(10),
+                ),
+              ),
+              child: Image(
+                image: AssetImage("assets/images/github.png"),
+              ),
+            ),
+            SizedBox(height: 5),
+            CustomText(
+              text: "Art Store",
+              size: 18,
+              weight: FontWeight.bold,
+              color: lightPurple,
+            ),
+          ],
+        ),
+      );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Container(
         margin: EdgeInsets.only(right: 7, left: 7),
-        child: ListView(
+        child: Column(
           children: [
             SizedBox(height: 30),
             Center(
@@ -137,32 +175,31 @@ class ProjectsPage extends StatelessWidget {
               ],
             ),
             SizedBox(height: 20),
-            Container(
-              padding: EdgeInsets.only(bottom: 20),
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage("assets/images/projectsBackground.png"),
-                  fit: BoxFit.fill,
-                ),
-              ),
-              child: Stack(
-                children: [
-                  Center(
-                    child: ResponsiveRowColumn(
-                      // rowMainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      layout:
-                          ResponsiveWrapper.of(context).isSmallerThan(DESKTOP)
-                              ? ResponsiveRowColumnType.COLUMN
-                              : ResponsiveRowColumnType.ROW,
-                      children: [
-                        ResponsiveRowColumnItem(
-                            rowFlex: 1, child: _buildProject(context)),
-                        ResponsiveRowColumnItem(
-                            rowFlex: 1, child: _buildProject(context)),
-                      ],
-                    ),
+            Expanded(
+              child: Container(
+                padding: EdgeInsets.only(bottom: 20),
+                // width: MediaQuery.of(context).size.width,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("assets/images/projectsBackground.png"),
+                    fit: BoxFit.fill,
                   ),
-                ],
+                ),
+                child: Container(
+                  margin: EdgeInsets.only(right: 30, left: 30),
+                  child: GridView.builder(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount:
+                          ResponsiveWrapper.of(context).isSmallerThan(DESKTOP)
+                              ? 1
+                              : 2,
+                    ),
+                    itemCount: 16,
+                    itemBuilder: (BuildContext context, int index) {
+                      return _buildProject(context);
+                    },
+                  ),
+                ),
               ),
             ),
           ],

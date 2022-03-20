@@ -75,64 +75,78 @@ class ContactPage extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 40),
-            ResponsiveRowColumn(
-              rowMainAxisAlignment: MainAxisAlignment.center,
-              layout:
-                  ResponsiveWrapper.of(context).isSmallerThan("SMALLDESKTOP")
-                      ? ResponsiveRowColumnType.COLUMN
-                      : ResponsiveRowColumnType.ROW,
-              children: [
-                ResponsiveRowColumnItem(
-                  rowFlex: 1,
-                  child: InkWell(
-                    // onTap: () => contactController.goTo(url: "https://github.com/tjava"),
-                    child: _buildContact(
-                      context,
-                      name: "Email",
-                      image: "assets/images/email.png",
-                    ),
+            Container(
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("assets/images/skillsPurple.png"),
+                  fit: BoxFit.fill,
+                ),
+              ),
+              child: Column(
+                children: [
+                  ResponsiveRowColumn(
+                    rowMainAxisAlignment: MainAxisAlignment.center,
+                    layout: ResponsiveWrapper.of(context)
+                            .isSmallerThan("SMALLDESKTOP")
+                        ? ResponsiveRowColumnType.COLUMN
+                        : ResponsiveRowColumnType.ROW,
+                    children: [
+                      ResponsiveRowColumnItem(
+                        rowFlex: 1,
+                        child: InkWell(
+                          // onTap: () => contactController.goTo(url: "https://github.com/tjava"),
+                          child: _buildContact(
+                            context,
+                            name: "Email",
+                            image: "assets/images/email.png",
+                          ),
+                        ),
+                      ),
+                      ResponsiveRowColumnItem(
+                        rowFlex: 1,
+                        child: _buildContact(context,
+                            name: "Whatsapp",
+                            image: "assets/images/whatsapp.png"),
+                      ),
+                    ],
                   ),
-                ),
-                ResponsiveRowColumnItem(
-                  rowFlex: 1,
-                  child: _buildContact(context,
-                      name: "Whatsapp", image: "assets/images/whatsapp.png"),
-                ),
-              ],
-            ),
-            ResponsiveRowColumn(
-              rowMainAxisAlignment: MainAxisAlignment.center,
-              layout:
-                  ResponsiveWrapper.of(context).isSmallerThan("SMALLDESKTOP")
-                      ? ResponsiveRowColumnType.COLUMN
-                      : ResponsiveRowColumnType.ROW,
-              children: [
-                ResponsiveRowColumnItem(
-                  rowFlex: 1,
-                  child: _buildContact(context,
-                      name: "LinkedIn", image: "assets/images/linkedin.png"),
-                ),
-                ResponsiveRowColumnItem(
-                  rowFlex: 1,
-                  child: _buildContact(context,
-                      name: "Github", image: "assets/images/gh.png"),
-                ),
-              ],
-            ),
-            ResponsiveRowColumn(
-              rowMainAxisAlignment: MainAxisAlignment.center,
-              layout:
-                  ResponsiveWrapper.of(context).isSmallerThan("SMALLDESKTOP")
-                      ? ResponsiveRowColumnType.COLUMN
-                      : ResponsiveRowColumnType.ROW,
-              children: [
-                ResponsiveRowColumnItem(
-                  rowFlex: 1,
-                  child: _buildContact(context,
-                      name: "Facebook", image: "assets/images/fb.png"),
-                ),
-              ],
-            ),
+                  ResponsiveRowColumn(
+                    rowMainAxisAlignment: MainAxisAlignment.center,
+                    layout: ResponsiveWrapper.of(context)
+                            .isSmallerThan("SMALLDESKTOP")
+                        ? ResponsiveRowColumnType.COLUMN
+                        : ResponsiveRowColumnType.ROW,
+                    children: [
+                      ResponsiveRowColumnItem(
+                        rowFlex: 1,
+                        child: _buildContact(context,
+                            name: "LinkedIn",
+                            image: "assets/images/linkedin.png"),
+                      ),
+                      ResponsiveRowColumnItem(
+                        rowFlex: 1,
+                        child: _buildContact(context,
+                            name: "Github", image: "assets/images/gh.png"),
+                      ),
+                    ],
+                  ),
+                  ResponsiveRowColumn(
+                    rowMainAxisAlignment: MainAxisAlignment.center,
+                    layout: ResponsiveWrapper.of(context)
+                            .isSmallerThan("SMALLDESKTOP")
+                        ? ResponsiveRowColumnType.COLUMN
+                        : ResponsiveRowColumnType.ROW,
+                    children: [
+                      ResponsiveRowColumnItem(
+                        rowFlex: 1,
+                        child: _buildContact(context,
+                            name: "Facebook", image: "assets/images/fb.png"),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       ),
