@@ -25,109 +25,87 @@ class ProjectsPage extends StatelessWidget {
         // ),
       );
 
-  _buildProject(context) => Container(
-        height: 50.0,
-        width: 650.0,
-        margin: EdgeInsets.only(top: 20, right: 15, left: 15),
-        decoration: BoxDecoration(
-          color: Colors.green,
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: Column(
+  _buildProject(context) => Center(
+        child: Stack(
           children: [
             Container(
-              height: ResponsiveValue(context, defaultValue: 300.0, valueWhen: [
-                Condition.smallerThan(name: "LARGEMOBILE", value: 280.0)
+              height: ResponsiveValue(context, defaultValue: 520.0, valueWhen: [
+                Condition.smallerThan(name: "600", value: 460.0)
               ]).value,
-              width: MediaQuery.of(context).size.width,
+              width: ResponsiveValue(context, defaultValue: 650.0, valueWhen: [
+                Condition.largerThan(name: "900", value: 550.0)
+              ]).value,
+              margin: EdgeInsets.only(top: 20, right: 15, left: 15),
               decoration: BoxDecoration(
-                color: Colors.red,
-                borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(10),
-                  topLeft: Radius.circular(10),
-                ),
-              ),
-              child: Image(
-                image: AssetImage("assets/images/wrench.png"),
-              ),
-            ),
-            SizedBox(height: 15),
-            CustomText(
-              text: "Art Store",
-              size: 25,
-              weight: FontWeight.bold,
-              color: lightPurple,
-            ),
-            SizedBox(height: 15),
-            Container(
-              margin: EdgeInsets.only(right: 15, left: 15, bottom: 5),
-              child: RichText(
-                text: TextSpan(
-                  text:
-                      "Art Ecommercer art store design with laravel and mysql.",
-                  style: TextStyle(
-                    fontSize: 17,
-                    fontWeight: FontWeight.w500,
-                    color: dark,
-                  ),
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            SizedBox(height: 15),
-            Container(
-              height: 40,
-              width: MediaQuery.of(context).size.width,
-              margin: EdgeInsets.only(right: 20, left: 20),
-              decoration: BoxDecoration(
-                color: darkPurple,
+                color: Colors.white,
+                border: Border.all(color: lightPurple),
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: Center(
-                child: CustomText(
-                  text: "Learn More",
-                  size: 18,
-                  color: Colors.white,
-                ),
+              child: Column(
+                children: [
+                  Container(
+                    height: ResponsiveValue(context,
+                        defaultValue: 380.0,
+                        valueWhen: [
+                          Condition.smallerThan(name: "430", value: 220.0),
+                          Condition.smallerThan(name: "470", value: 250.0),
+                          Condition.smallerThan(name: "500", value: 280.0),
+                          Condition.smallerThan(name: "600", value: 300.0)
+                        ]).value,
+                    width: MediaQuery.of(context).size.width,
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(10),
+                        topLeft: Radius.circular(10),
+                      ),
+                    ),
+                    child: Image(
+                      image: AssetImage("assets/images/wrench.png"),
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  CustomText(
+                    text: "project",
+                    size: 25,
+                    weight: FontWeight.bold,
+                    color: lightPurple,
+                  ),
+                  SizedBox(height: 10),
+                  Container(
+                    margin: EdgeInsets.only(right: 15, left: 15, bottom: 5),
+                    child: RichText(
+                      text: TextSpan(
+                        text:
+                            "Art Ecommercer art store design with laravel and mysql.",
+                        style: TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.w500,
+                          color: dark,
+                        ),
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Container(
+                    height: 40,
+                    width: MediaQuery.of(context).size.width,
+                    margin: EdgeInsets.only(right: 20, left: 20),
+                    decoration: BoxDecoration(
+                      color: darkPurple,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Center(
+                      child: CustomText(
+                        text: "Learn More",
+                        size: 18,
+                        color: Colors.white,
+                      ),
+                    ),
+                  )
+                ],
               ),
-            )
-          ],
-        ),
-      );
-
-  _buildSkills(context) => Container(
-        height: 150.0,
-        width: 150.0,
-        margin: EdgeInsets.all(15),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          border: Border.all(color: darkPurple),
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              height: ResponsiveValue(context, defaultValue: 110.0, valueWhen: [
-                Condition.smallerThan(name: "LARGEMOBILE", value: 90.0)
-              ]).value,
-              width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(10),
-                  topLeft: Radius.circular(10),
-                ),
-              ),
-              child: Image(
-                image: AssetImage("assets/images/github.png"),
-              ),
-            ),
-            SizedBox(height: 5),
-            CustomText(
-              text: "Art Store",
-              size: 18,
-              weight: FontWeight.bold,
-              color: lightPurple,
             ),
           ],
         ),
@@ -139,7 +117,8 @@ class ProjectsPage extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Container(
         margin: EdgeInsets.only(right: 7, left: 7),
-        child: Column(
+        child: ListView(
+          shrinkWrap: true,
           children: [
             SizedBox(height: 30),
             Center(
@@ -175,31 +154,39 @@ class ProjectsPage extends StatelessWidget {
               ],
             ),
             SizedBox(height: 20),
-            Expanded(
-              child: Container(
-                padding: EdgeInsets.only(bottom: 20),
-                // width: MediaQuery.of(context).size.width,
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage("assets/images/projectsBackground.png"),
-                    fit: BoxFit.fill,
-                  ),
+            Container(
+              padding: EdgeInsets.only(bottom: 20),
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("assets/images/projectsBackground.png"),
+                  fit: BoxFit.fill,
                 ),
-                child: Container(
-                  margin: EdgeInsets.only(right: 30, left: 30),
-                  child: GridView.builder(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount:
-                          ResponsiveWrapper.of(context).isSmallerThan(DESKTOP)
-                              ? 1
-                              : 2,
-                    ),
-                    itemCount: 16,
-                    itemBuilder: (BuildContext context, int index) {
-                      return _buildProject(context);
-                    },
-                  ),
+              ),
+              child: GridView.builder(
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                scrollDirection: Axis.vertical,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: ResponsiveValue(
+                    context,
+                    defaultValue: 1,
+                    valueWhen: [Condition.largerThan(name: "900", value: 2)],
+                  ).value!,
+                  mainAxisSpacing: 5.0,
+                  crossAxisSpacing: 5.0,
+                  childAspectRatio:
+                      ResponsiveValue(context, defaultValue: 1.0, valueWhen: [
+                    Condition.largerThan(name: "500", value: 1.12),
+                    Condition.largerThan(name: "600", value: 1.25),
+                    Condition.largerThan(name: "700", value: 1.48),
+                    Condition.largerThan(name: "800", value: 1.57),
+                    Condition.largerThan(name: "900", value: 0.9),
+                  ]).value!,
                 ),
+                itemCount: 5,
+                itemBuilder: (BuildContext context, int index) {
+                  return _buildProject(context);
+                },
               ),
             ),
           ],

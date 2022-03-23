@@ -21,7 +21,7 @@ class SkillsPage extends StatelessWidget {
           children: [
             Container(
               height: ResponsiveValue(context, defaultValue: 110.0, valueWhen: [
-                Condition.smallerThan(name: "LARGEMOBILE", value: 90.0)
+                Condition.smallerThan(name: "500", value: 90.0)
               ]).value,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
@@ -51,7 +51,8 @@ class SkillsPage extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Container(
         margin: EdgeInsets.only(right: 7, left: 7),
-        child: Column(
+        child: ListView(
+          shrinkWrap: true,
           children: [
             SizedBox(height: 30),
             Center(
@@ -75,35 +76,34 @@ class SkillsPage extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 40),
-            Expanded(
-              child: Container(
-                padding: EdgeInsets.only(bottom: 20),
-                // width: MediaQuery.of(context).size.width,
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage("assets/images/skillsPurple.png"),
-                    fit: BoxFit.fill,
-                  ),
+            Container(
+              padding: EdgeInsets.only(bottom: 20),
+              // width: MediaQuery.of(context).size.width,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("assets/images/skillsPurple.png"),
+                  fit: BoxFit.fill,
                 ),
-                child: Container(
-                  margin: EdgeInsets.only(right: 30, left: 30),
-                  child: GridView.builder(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: ResponsiveValue(
-                        context,
-                        defaultValue: 2,
-                        valueWhen: [
-                          Condition.smallerThan(name: MOBILE, value: 1),
-                          Condition.largerThan(name: "LARGEMOBILE", value: 3),
-                          Condition.largerThan(name: TABLET, value: 4)
-                        ],
-                      ).value!,
-                    ),
-                    itemCount: 16,
-                    itemBuilder: (BuildContext context, int index) {
-                      return _buildSkill(context);
-                    },
+              ),
+              child: Container(
+                margin: EdgeInsets.only(right: 30, left: 30),
+                child: GridView.builder(
+                  shrinkWrap: true,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: ResponsiveValue(
+                      context,
+                      defaultValue: 2,
+                      valueWhen: [
+                        Condition.smallerThan(name: "400", value: 1),
+                        Condition.largerThan(name: "500", value: 3),
+                        Condition.largerThan(name: "900", value: 4)
+                      ],
+                    ).value!,
                   ),
+                  itemCount: 16,
+                  itemBuilder: (BuildContext context, int index) {
+                    return _buildSkill(context);
+                  },
                 ),
               ),
             ),

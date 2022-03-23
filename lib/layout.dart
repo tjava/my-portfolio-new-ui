@@ -5,7 +5,7 @@ import 'package:my_portfolio_ui/pages/contact_page.dart';
 import 'package:my_portfolio_ui/pages/home_page.dart';
 import 'package:my_portfolio_ui/pages/projects_page.dart';
 import 'package:my_portfolio_ui/pages/skills_page.dart';
-import 'package:my_portfolio_ui/widgets/navigation_bar.dart';
+import 'package:my_portfolio_ui/widgets/navigation.dart';
 
 class Layout extends StatelessWidget {
   // const Layout({ Key? key }) : super(key: key);
@@ -24,7 +24,7 @@ class Layout extends StatelessWidget {
       () => Scaffold(
         extendBody: true,
         body: Pages[navigationController.activePage.value],
-        appBar: NavigationBar(context),
+        appBar: Navigation(context),
       ),
     );
   }

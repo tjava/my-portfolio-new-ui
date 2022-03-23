@@ -5,7 +5,7 @@ import 'package:my_portfolio_ui/controllers/navigation_controller.dart';
 import 'package:my_portfolio_ui/widgets/custom_text.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
-AppBar NavigationBar(BuildContext context) {
+AppBar Navigation(BuildContext context) {
   NavigationController navigationController = Get.find();
 
   _buildNav({String? name, int? indexPage}) => Container(

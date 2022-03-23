@@ -86,10 +86,9 @@ class ContactPage extends StatelessWidget {
                 children: [
                   ResponsiveRowColumn(
                     rowMainAxisAlignment: MainAxisAlignment.center,
-                    layout: ResponsiveWrapper.of(context)
-                            .isSmallerThan("SMALLDESKTOP")
-                        ? ResponsiveRowColumnType.COLUMN
-                        : ResponsiveRowColumnType.ROW,
+                    layout: ResponsiveWrapper.of(context).isLargerThan("500")
+                        ? ResponsiveRowColumnType.ROW
+                        : ResponsiveRowColumnType.COLUMN,
                     children: [
                       ResponsiveRowColumnItem(
                         rowFlex: 1,
@@ -112,10 +111,9 @@ class ContactPage extends StatelessWidget {
                   ),
                   ResponsiveRowColumn(
                     rowMainAxisAlignment: MainAxisAlignment.center,
-                    layout: ResponsiveWrapper.of(context)
-                            .isSmallerThan("SMALLDESKTOP")
-                        ? ResponsiveRowColumnType.COLUMN
-                        : ResponsiveRowColumnType.ROW,
+                    layout: ResponsiveWrapper.of(context).isLargerThan("500")
+                        ? ResponsiveRowColumnType.ROW
+                        : ResponsiveRowColumnType.COLUMN,
                     children: [
                       ResponsiveRowColumnItem(
                         rowFlex: 1,
@@ -132,10 +130,9 @@ class ContactPage extends StatelessWidget {
                   ),
                   ResponsiveRowColumn(
                     rowMainAxisAlignment: MainAxisAlignment.center,
-                    layout: ResponsiveWrapper.of(context)
-                            .isSmallerThan("SMALLDESKTOP")
-                        ? ResponsiveRowColumnType.COLUMN
-                        : ResponsiveRowColumnType.ROW,
+                    layout: ResponsiveWrapper.of(context).isLargerThan("500")
+                        ? ResponsiveRowColumnType.ROW
+                        : ResponsiveRowColumnType.COLUMN,
                     children: [
                       ResponsiveRowColumnItem(
                         rowFlex: 1,
