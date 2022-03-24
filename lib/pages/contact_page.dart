@@ -4,6 +4,7 @@ import 'package:my_portfolio_ui/constants/colors.dart';
 import 'package:my_portfolio_ui/controllers/contact_controller.dart';
 import 'package:my_portfolio_ui/widgets/custom_text.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:url_launcher/link.dart';
 
 class ContactPage extends StatelessWidget {
   const ContactPage({Key? key}) : super(key: key);
@@ -93,7 +94,7 @@ class ContactPage extends StatelessWidget {
                       ResponsiveRowColumnItem(
                         rowFlex: 1,
                         child: InkWell(
-                          // onTap: () => contactController.goTo(url: "https://github.com/tjava"),
+                          onTap: () => contactController.email(),
                           child: _buildContact(
                             context,
                             name: "Email",
@@ -103,9 +104,12 @@ class ContactPage extends StatelessWidget {
                       ),
                       ResponsiveRowColumnItem(
                         rowFlex: 1,
-                        child: _buildContact(context,
-                            name: "Whatsapp",
-                            image: "assets/images/whatsapp.png"),
+                        child: InkWell(
+                          onTap: () => contactController.whatsApp(),
+                          child: _buildContact(context,
+                              name: "Whatsapp",
+                              image: "assets/images/whatsapp.png"),
+                        ),
                       ),
                     ],
                   ),
@@ -117,14 +121,20 @@ class ContactPage extends StatelessWidget {
                     children: [
                       ResponsiveRowColumnItem(
                         rowFlex: 1,
-                        child: _buildContact(context,
-                            name: "LinkedIn",
-                            image: "assets/images/linkedin.png"),
+                        child: InkWell(
+                          onTap: () => contactController.linkedIn(),
+                          child: _buildContact(context,
+                              name: "LinkedIn",
+                              image: "assets/images/linkedin.png"),
+                        ),
                       ),
                       ResponsiveRowColumnItem(
                         rowFlex: 1,
-                        child: _buildContact(context,
-                            name: "Github", image: "assets/images/gh.png"),
+                        child: InkWell(
+                          onTap: () => contactController.gitHub(),
+                          child: _buildContact(context,
+                              name: "Github", image: "assets/images/gh.png"),
+                        ),
                       ),
                     ],
                   ),
@@ -136,8 +146,11 @@ class ContactPage extends StatelessWidget {
                     children: [
                       ResponsiveRowColumnItem(
                         rowFlex: 1,
-                        child: _buildContact(context,
-                            name: "Facebook", image: "assets/images/fb.png"),
+                        child: InkWell(
+                          onTap: () => contactController.faceBook(),
+                          child: _buildContact(context,
+                              name: "Facebook", image: "assets/images/fb.png"),
+                        ),
                       ),
                     ],
                   ),

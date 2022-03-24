@@ -1,11 +1,11 @@
 {
-    "name": "my_portfolio_ui",
-    "short_name": "my_portfolio_ui",
+    "name": "Developer Portfolio",
+    "short_name": "Developer Portfolio",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Hi I'm Taiwo. I'm a full stack developer who loves to play around with programming and learning new things.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

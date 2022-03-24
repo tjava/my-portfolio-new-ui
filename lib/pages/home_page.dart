@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-// import 'package:flutter_svg/flutter_svg.dart';
 import 'package:my_portfolio_ui/constants/colors.dart';
+import 'package:my_portfolio_ui/controllers/contact_controller.dart';
+import 'package:my_portfolio_ui/controllers/home_controller.dart';
 import 'package:my_portfolio_ui/controllers/navigation_controller.dart';
 import 'package:my_portfolio_ui/widgets/custom_text.dart';
 
@@ -11,6 +12,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     NavigationController navigationController = Get.find();
+    HomeController homeController = Get.find();
     return Container(
       margin: EdgeInsets.only(right: 7, left: 7),
       color: Colors.white,
@@ -100,23 +102,26 @@ class HomePage extends StatelessWidget {
                           ],
                         ),
                       ),
-                      Column(
-                        children: [
-                          Container(
-                            height: 70,
-                            width: 70,
-                            child: Image(
-                              image: AssetImage("assets/images/github.png"),
+                      InkWell(
+                        onTap: () => homeController.gitHub(),
+                        child: Column(
+                          children: [
+                            Container(
+                              height: 70,
+                              width: 70,
+                              child: Image(
+                                image: AssetImage("assets/images/github.png"),
+                              ),
                             ),
-                          ),
-                          SizedBox(height: 5),
-                          CustomText(
-                            text: "Github",
-                            size: 18,
-                            weight: FontWeight.bold,
-                            color: darkPurple,
-                          ),
-                        ],
+                            SizedBox(height: 5),
+                            CustomText(
+                              text: "Github",
+                              size: 18,
+                              weight: FontWeight.bold,
+                              color: darkPurple,
+                            ),
+                          ],
+                        ),
                       ),
                       InkWell(
                         onTap: () => navigationController.changePage(2),
