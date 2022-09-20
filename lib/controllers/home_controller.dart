@@ -13,14 +13,4 @@ class HomeController extends GetxController {
       print(error);
     }
   }
-
-  // @override
-  // void onInit() async {
-  //   SystemChrome.setApplicationSwitcherDescription(
-  //     ApplicationSwitcherDescription(
-  //       label: "Developer - Taiwo Hassan",
-  //     ),
-  //   );
-  //   super.onInit();
-  // }
 }

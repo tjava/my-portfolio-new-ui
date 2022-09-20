@@ -1,15 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:get/get.dart' hide Condition;
 import 'package:my_portfolio_ui/constants/colors.dart';
-import 'package:my_portfolio_ui/data/data.dart';
+import 'package:my_portfolio_ui/controllers/single_project_controller.dart';
 import 'package:my_portfolio_ui/widgets/custom_text.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
-class SingleProjectPage extends StatelessWidget {
+class SingleProjectPage extends StatefulWidget {
   const SingleProjectPage({Key? key}) : super(key: key);
+
+  @override
+  State<SingleProjectPage> createState() => _SingleProjectPageState();
+}
+
+class _SingleProjectPageState extends State<SingleProjectPage> {
+  SingleProjectController singleProjectController = Get.find();
 
   _buildSkill() {
     List<Widget> skillList = [];
-    skillsList.forEach((skill) {
+    singleProjectController.singleProject.languagesUsed!.forEach((skill) {
       skillList.add(
         Container(
           height: 30,
@@ -18,7 +27,7 @@ class SingleProjectPage extends StatelessWidget {
           decoration: BoxDecoration(
             // color: Colors.blue,
             image: DecorationImage(
-              image: AssetImage(skill),
+              image: NetworkImage(skill.image!),
               fit: BoxFit.fill,
             ),
           ),
@@ -28,6 +37,16 @@ class SingleProjectPage extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: skillList,
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    SystemChrome.setApplicationSwitcherDescription(
+      ApplicationSwitcherDescription(
+        label: singleProjectController.singleProject.slug,
+      ),
     );
   }
 
@@ -45,10 +64,13 @@ class SingleProjectPage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Icon(
-                    Icons.arrow_back,
-                    size: 40,
-                    color: dark,
+                  GestureDetector(
+                    onTap: (() => Get.back()),
+                    child: Icon(
+                      Icons.arrow_back,
+                      size: 40,
+                      color: dark,
+                    ),
                   ),
                 ],
               ),
@@ -67,7 +89,7 @@ class SingleProjectPage extends StatelessWidget {
                 children: [
                   RichText(
                     text: TextSpan(
-                      text: "Hotel Booking App",
+                      text: singleProjectController.singleProject.name,
                       style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
@@ -87,7 +109,9 @@ class SingleProjectPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Image(
-                      image: AssetImage("assets/images/wrench.png"),
+                      image: NetworkImage(
+                          singleProjectController.singleProject.image!),
+                      fit: BoxFit.fill,
                     ),
                   ),
                   SizedBox(height: 12),
@@ -106,20 +130,25 @@ class SingleProjectPage extends StatelessWidget {
                     child: Column(
                       children: [
                         SizedBox(height: 10),
-                        Container(
-                          height: 40.0,
-                          width: MediaQuery.of(context).size.width,
-                          margin: EdgeInsets.only(right: 20, left: 20),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: darkPurple),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Center(
-                            child: CustomText(
-                              text: "Go Live",
-                              size: 16,
-                              weight: FontWeight.w500,
-                              color: darkPurple,
+                        GestureDetector(
+                          onTap: () async => await singleProjectController.link(
+                              singleProjectController
+                                  .singleProject.links![0].link),
+                          child: Container(
+                            height: 40.0,
+                            width: MediaQuery.of(context).size.width,
+                            margin: EdgeInsets.only(right: 20, left: 20),
+                            decoration: BoxDecoration(
+                              border: Border.all(color: darkPurple),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Center(
+                              child: CustomText(
+                                text: "Go Live",
+                                size: 16,
+                                weight: FontWeight.w500,
+                                color: darkPurple,
+                              ),
                             ),
                           ),
                         ),
@@ -135,8 +164,8 @@ class SingleProjectPage extends StatelessWidget {
                           margin: EdgeInsets.only(right: 20, left: 20),
                           child: RichText(
                             text: TextSpan(
-                              text:
-                                  "Hotel Booking App is a mobile phone app for hotel booking and management. It's make a call to php laravel design restFULL api. design with ionic framework.",
+                              text: singleProjectController
+                                  .singleProject.detailDescription,
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w500,
@@ -147,20 +176,25 @@ class SingleProjectPage extends StatelessWidget {
                           ),
                         ),
                         SizedBox(height: 20),
-                        Container(
-                          height: 40.0,
-                          width: MediaQuery.of(context).size.width,
-                          margin: EdgeInsets.only(right: 20, left: 20),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: darkPurple),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Center(
-                            child: CustomText(
-                              text: "Github",
-                              size: 16,
-                              weight: FontWeight.w500,
-                              color: darkPurple,
+                        GestureDetector(
+                          onTap: () async => await singleProjectController.link(
+                              singleProjectController
+                                  .singleProject.links![0].link),
+                          child: Container(
+                            height: 40.0,
+                            width: MediaQuery.of(context).size.width,
+                            margin: EdgeInsets.only(right: 20, left: 20),
+                            decoration: BoxDecoration(
+                              border: Border.all(color: darkPurple),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Center(
+                              child: CustomText(
+                                text: "Github",
+                                size: 16,
+                                weight: FontWeight.w500,
+                                color: darkPurple,
+                              ),
                             ),
                           ),
                         ),

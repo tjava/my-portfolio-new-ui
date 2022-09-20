@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_portfolio_ui/constants/init_dependencies.dart';
 import 'package:my_portfolio_ui/layout.dart';
-import 'package:my_portfolio_ui/pages/home_page.dart';
-import 'package:my_portfolio_ui/pages/projects_page.dart';
 import 'package:my_portfolio_ui/pages/single_project_page.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:url_strategy/url_strategy.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  setPathUrlStrategy();
   runApp(const MyApp());
 }
 

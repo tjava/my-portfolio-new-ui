@@ -1,6 +1,4 @@
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:my_portfolio_ui/constants/colors.dart';
 import 'package:my_portfolio_ui/services/contact_service.dart';
 
 class ContactController extends GetxController {
@@ -28,7 +26,7 @@ class ContactController extends GetxController {
     contactService = ContactService();
     try {
       await contactService!
-          .goTo(url: "https://www.linkedin.com/in/taiwo-hassan-80501b19b/");
+          .goTo(url: "https://www.linkedin.com/in/taiwo-hassan-oo7");
     } on Exception catch (error) {
       print(error);
     }
@@ -52,14 +50,4 @@ class ContactController extends GetxController {
       print(error);
     }
   }
-
-  // @override
-  // void onInit() async {
-  //   SystemChrome.setApplicationSwitcherDescription(
-  //     ApplicationSwitcherDescription(
-  //       label: "Contact Me",
-  //     ),
-  //   );
-  //   super.onInit();
-  // }
 }

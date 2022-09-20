@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:my_portfolio_ui/constants/colors.dart';
 import 'package:my_portfolio_ui/controllers/contact_controller.dart';
@@ -6,8 +7,23 @@ import 'package:my_portfolio_ui/controllers/home_controller.dart';
 import 'package:my_portfolio_ui/controllers/navigation_controller.dart';
 import 'package:my_portfolio_ui/widgets/custom_text.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+    SystemChrome.setApplicationSwitcherDescription(
+      ApplicationSwitcherDescription(
+        label: "Developer - Taiwo Hassan",
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:my_portfolio_ui/constants/colors.dart';
 import 'package:my_portfolio_ui/controllers/contact_controller.dart';
 import 'package:my_portfolio_ui/widgets/custom_text.dart';
 import 'package:responsive_framework/responsive_framework.dart';
-import 'package:url_launcher/link.dart';
 
-class ContactPage extends StatelessWidget {
+class ContactPage extends StatefulWidget {
   const ContactPage({Key? key}) : super(key: key);
 
+  @override
+  State<ContactPage> createState() => _ContactPageState();
+}
+
+class _ContactPageState extends State<ContactPage> {
   _buildContact(context, {String? name, String? image}) => Container(
         height: 150.0,
         width: 210.0,
@@ -44,6 +49,16 @@ class ContactPage extends StatelessWidget {
           ],
         ),
       );
+
+  @override
+  void initState() {
+    super.initState();
+    SystemChrome.setApplicationSwitcherDescription(
+      ApplicationSwitcherDescription(
+        label: "Contact Me",
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
