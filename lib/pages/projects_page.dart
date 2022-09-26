@@ -181,15 +181,11 @@ class _ProjectsPageState extends State<ProjectsPage> {
               ),
               SizedBox(height: 20),
               if (projectsController.projects.isEmpty)
-                Container(
-                  height: 400,
-                  padding: EdgeInsets.only(bottom: 20),
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage("assets/images/projectsBackground.png"),
-                      fit: BoxFit.fill,
-                    ),
-                  ),
+                SizedBox(
+                  height:
+                      ResponsiveValue(context, defaultValue: 600.0, valueWhen: [
+                    Condition.largerThan(name: "400", value: 300.0),
+                  ]).value!,
                   child: Center(
                     child: Image(
                       height: 80,

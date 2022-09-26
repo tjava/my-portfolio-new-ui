@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 class SkillsService {
   late Dio _dio;
 
-  final String baseUrl = "http://api.taiwohassan.tk/api/";
+  final String baseUrl = "https://api.taiwohassan.tk/api/";
 
   SkillsService() {
     _dio = Dio(

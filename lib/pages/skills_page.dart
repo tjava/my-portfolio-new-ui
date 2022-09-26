@@ -97,14 +97,11 @@ class _SkillsPageState extends State<SkillsPage> {
               ),
               SizedBox(height: 40),
               if (skillsController.skills.isEmpty)
-                Container(
-                  height: 400,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage("assets/images/skillsPurple.png"),
-                      fit: BoxFit.fill,
-                    ),
-                  ),
+                SizedBox(
+                  height:
+                      ResponsiveValue(context, defaultValue: 600.0, valueWhen: [
+                    Condition.largerThan(name: "400", value: 300.0),
+                  ]).value!,
                   child: Center(
                     child: Image(
                       height: 80,
@@ -126,13 +123,14 @@ class _SkillsPageState extends State<SkillsPage> {
                   child: Container(
                     margin: EdgeInsets.only(right: 30, left: 30),
                     child: GridView.builder(
+                      physics: NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: ResponsiveValue(
                           context,
                           defaultValue: 2,
                           valueWhen: [
-                            Condition.smallerThan(name: "400", value: 1),
+                            Condition.smallerThan(name: "400", value: 2),
                             Condition.largerThan(name: "500", value: 3),
                             Condition.largerThan(name: "900", value: 4)
                           ],
